@@ -2,18 +2,12 @@ misc-ruby-code
 ==============
 
 === soc.rb:
- Given a text file(data.rb), treat each line of the file as a string.
- Generate and print out all the permutations of each of these strings.
+ - Given a text file(data.rb), treat each line of the file as a string.
+ - Generate and print out all the permutations of each of these strings.
 
 
 === scheduler.rb:
- Write methods in the Scheduler class to generate the following output
-
-   - (after 1 sec) time is now 1 seconds
-   - (after 2 sec) time is now 2 seconds
-   - (after 3 sec) time is now 3 seconds
-
- from the program:
+ Given the test program:
 
        class Scheduler
        end
@@ -31,3 +25,10 @@ misc-ruby-code
        end
 
        Scheduler.run
+
+ Write methods in the Scheduler class to generate the following output
+
+        - (after 1 sec) time is now 1 seconds
+        - (after 2 sec) time is now 2 seconds
+        - (after 3 sec) time is now 3 seconds
+
