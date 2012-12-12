@@ -36,10 +36,11 @@ class Scheduler
     current_time = 0
 
     @@jobs.each do |start_time, handler|
-
       puts "before call: current_time = #{Time.now}"
+
       sleep(start_time - current_time)
       handler.call
+
       puts "after call: current_time = #{Time.now}"
       puts
 
