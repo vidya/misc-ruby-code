@@ -1,5 +1,5 @@
 
-#-----------------------------------------------------------------
+#
 # Write methods in the Scheduler class to generate the following output
 #
 #   (after 1 sec) time is now 1 seconds
@@ -25,7 +25,6 @@
 
 #       Scheduler.run
 #
-#-----------------------------------------------------------------
 
 require 'pry'
 
@@ -66,8 +65,8 @@ Scheduler.after 2 do
 	puts "time is now 2 seconds"
 end
 
-Scheduler.after 1 do 
-	puts "time is now 1 seconds"
+Scheduler.after 1 do
+  puts "time is now 1 seconds"
 end
 
 Scheduler.run

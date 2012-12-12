@@ -13,3 +13,6 @@ gem "json"
 gem 'sinatra'
 gem 'datamapper'
 gem 'google-api-client'
+
+gem 'eventmachine'
+gem 'em-http-request'

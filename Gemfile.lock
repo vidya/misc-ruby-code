@@ -8,6 +8,7 @@ GEM
       multi_json (>= 1.0.0)
     bcrypt-ruby (3.0.1)
     coderay (1.0.7)
+    cookiejar (0.3.0)
     data_objects (0.10.10)
       addressable (~> 2.1)
     datamapper (1.2.0)
@@ -56,6 +57,15 @@ GEM
       dm-core (~> 1.2.0)
     do_sqlite3 (0.10.10)
       data_objects (= 0.10.10)
+    em-http-request (1.0.3)
+      addressable (>= 2.2.3)
+      cookiejar
+      em-socksify
+      eventmachine (>= 1.0.0.beta.4)
+      http_parser.rb (>= 0.5.3)
+    em-socksify (0.2.1)
+      eventmachine (>= 1.0.0.beta.4)
+    eventmachine (1.0.0)
     extlib (0.9.15)
     faraday (0.7.6)
       addressable (~> 2.2)
@@ -70,6 +80,7 @@ GEM
       launchy (>= 2.0.0)
       multi_json (>= 1.0.0)
       signet (>= 0.3.1)
+    http_parser.rb (0.5.3)
     json (1.7.5)
     json_pure (1.7.5)
     jwt (0.1.5)
@@ -110,6 +121,8 @@ DEPENDENCIES
   dm-core
   dm-sqlite-adapter
   dm-timestamps
+  em-http-request
+  eventmachine
   google-api-client
   json
   pry
