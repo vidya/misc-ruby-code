@@ -44,8 +44,8 @@ class Scheduler
       puts
 
       current_time = start_time
-    end
-	end
+      end
+  end
 
   def self.after(period, &handler)
     @@jobs << [period, handler]
