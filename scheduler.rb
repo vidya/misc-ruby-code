@@ -1,5 +1,4 @@
-
-#
+# ---------------------------------------------------
 # Write methods in the Scheduler class to generate the following output
 #
 #	 (after 1 sec) time is now 1 seconds
@@ -24,7 +23,7 @@
 #			 end
 
 #			 Scheduler.run
-#
+# ---------------------------------------------------
 
 require 'pry'
 
@@ -34,9 +33,9 @@ class Scheduler
   def self.run
     @@jobs.sort_by! { |job| job[0] }
 
-      current_time = 0
+    current_time = 0
 
-      @@jobs.each do |start_time, handler|
+    @@jobs.each do |start_time, handler|
 
       puts "before call: current_time = #{Time.now}"
       sleep(start_time - current_time)
