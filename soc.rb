@@ -7,19 +7,21 @@
 require 'pry'
 
 def generate_longer_perms(perm, last_let)
-  list = []
-  perm_size = perm.size
+  list        = []
+  perm_size   = perm.size
+
   (0..perm_size).each do |nn|
     new_perm  = if (nn <= 0)
-                  ''
+                  '' << last_let
                 else
-                  perm[0..(nn - 1)]
+                  perm[0..(nn - 1)] << last_let
                 end
 
-    new_perm << last_let
-    new_perm << perm[nn..(perm_size - 1)] if (perm_size > nn)
-
-    list << new_perm
+    list << if (nn < perm_size)
+              new_perm << perm[nn..(perm_size - 1)]
+            else
+              new_perm
+            end
   end
 
   list
