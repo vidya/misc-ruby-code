@@ -2,7 +2,7 @@ misc-ruby-code
 ==============
 
 === soc.rb:
- - Given a text file(data.rb), treat each line of the file as a string.
+ - Given a text file(data.txt), treat each line of the file as a string.
  - Generate and print out all the permutations of each of these strings.
 
 
