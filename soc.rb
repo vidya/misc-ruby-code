@@ -22,18 +22,15 @@ def generate_longer_perms(perm, last_let)
 end
 
 def permute_list(word)
-  return [word, word.reverse] if word.size.eql? 2
+  return [word, word.reverse] if (word.size.eql? 2)
 
-  prefix_perms    = permute_list word[0..-2]
+  prefix_perms    = permute_list(word[0..-2])
 
-  last_let        = word[-1]
-  perm_list       = prefix_perms.inject([]) { |list, perm| list << generate_longer_perms(perm, last_let) }
-
-  perm_list.flatten.uniq
+  prefix_perms.map { |perm| generate_longer_perms(perm, word[-1]) }.flatten.uniq
 end
 
 #--- main()
-File.open 'data.rb' do |infile|
+File.open 'data.txt' do |infile|
   while (word = infile.gets)
     puts "word = #{word}"
 
