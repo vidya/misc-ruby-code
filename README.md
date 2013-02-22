@@ -1,6 +1,3 @@
-misc-ruby-code
-==============
-
 fibonacci_sequence.rb
 ---------------------
 
