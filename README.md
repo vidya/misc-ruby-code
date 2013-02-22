@@ -2,6 +2,7 @@ misc-ruby-code
 ==============
 
 **fibonacci_sequence.rb**
+-------------------------
 
   Program for generating the fibonacci sequence of numbers:
 
