@@ -5,8 +5,8 @@ fibonacci_sequence.rb:
 
 - Program for generating the fibonacci sequence of numbers:
 
-               index: 1  2  3  4  5  6  7   8
-  fibonacci sequence: 0, 1, 1, 2, 3, 5, 8, 13, ...
+                 index: 1  2  3  4  5  6  7   8
+    fibonacci sequence: 0, 1, 1, 2, 3, 5, 8, 13, ...
 ----------------------------------------------------------------
 === soc.rb:
  - Given a text file(data.txt), treat each line of the file as a string.
