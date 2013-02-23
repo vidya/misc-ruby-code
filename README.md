@@ -7,6 +7,15 @@ fibonacci_sequence.rb
     fibonacci sequence:   0, 1, 1, 2, 3, 5, 8, 13, ...
 
 
+list_shuffle.rb
+---------------
+
+  Program for shuffling an input list of numbers. For example
+
+    input:    a list like [1,2,3,4,5]
+    output:   a random rearrangement of input, e.g. [5,3,4,1,2]
+
+
 soc.rb
 ------
  - Given a text file(data.txt), treat each line of the file as a string.
