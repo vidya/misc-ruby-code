@@ -10,8 +10,8 @@ require 'minitest/autorun'
 require 'benchmark'
 
 #--------------- shuffle { ----------------------------
-  # [1,2,3,4,5]
-  # [5,3,4,1,2]
+# [1,2,3,4,5]
+# [5,3,4,1,2]
 
 def get_shuffle(list)
   # handle exit conditions
@@ -22,42 +22,26 @@ def get_shuffle(list)
   last_num = list.last
 
   # slice away the last number
-  #small_shuffle = get_shuffle(list.slice(0..last_2))
-  small_shuffle = get_shuffle(list.slice(0..-2))
+  small_shuffle = get_shuffle(list.slice 0..-2)
 
   #put last_num at a random place in small_shuffle
   last_num_place = rand(0..small_shuffle.length)
 
+  return ([last_num] + small_shuffle) if last_num_place.eql?(0)
+
+  return (small_shuffle << last_num) if last_num_place.eql?(small_shuffle.length)
+
   shuffle = []
-  if last_num_place.eql?(0)
-    shuffle << last_num
-    shuffle += small_shuffle
 
-    return shuffle
+  small_shuffle_ind = 0
 
-  else
-    if (last_num_place.eql?(small_shuffle.length))
-      shuffle = small_shuffle
-      shuffle << last_num
-
-      return shuffle
+  loop do
+    #binding.pry
+    if small_shuffle_ind < last_num_place
+      shuffle << small_shuffle[small_shuffle_ind]
+      small_shuffle_ind += 1
     else
-      small_shuffle_ind = 0
-
-      loop do
-        #binding.pry
-        if small_shuffle_ind < last_num_place
-          shuffle << small_shuffle[small_shuffle_ind]
-          small_shuffle_ind += 1
-        else
-            # found the place to insert last_num
-
-           shuffle << last_num
-           shuffle += small_shuffle[small_shuffle_ind..-1]
-
-           return shuffle
-        end
-      end
+      return (shuffle << last_num) +  small_shuffle[small_shuffle_ind..-1]
     end
   end
 end
