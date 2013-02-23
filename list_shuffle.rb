@@ -14,22 +14,29 @@ require 'benchmark'
 # [5,3,4,1,2]
 
 def get_shuffle(list)
+  create_slots = -> in_list do
+    shuffle = []
+
+    in_list.each { |num| shuffle << nil << num }
+    shuffle << nil
+  end
+
+  get_random_empty_slot = -> in_list do
+    insert_location = rand(0..(in_list.length - 1))
+    insert_location = rand(0..(in_list.length - 1))  while in_list[insert_location]
+
+    insert_location
+  end
+
   # handle exit conditions
   return list if list.empty? or list.length.eql?(1)
 
-  last_num = list.last
-
   # shuffle a smaller list
-  small_shuffle = get_shuffle(list[0..-2])
+  shuffle = create_slots.call(get_shuffle list[0..-2])
 
-  # put last_num at a random place in small_shuffle
-  insert_location = rand(0..small_shuffle.length)
+  shuffle[get_random_empty_slot.call(shuffle)] = list.last
 
-  return ([last_num] + small_shuffle) if insert_location.eql?(0)
-
-  return (small_shuffle << last_num) if insert_location.eql?(small_shuffle.length)
-
-  return (small_shuffle[0..(insert_location - 1)] + [last_num] + small_shuffle[insert_location..-1])
+  shuffle.compact
 end
 #-------------- } shuffle -----------------------------
 
