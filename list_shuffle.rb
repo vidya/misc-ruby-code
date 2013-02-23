@@ -31,7 +31,8 @@ def get_shuffle(list)
   # handle exit conditions
   return list if list.empty? or list.length.eql?(1)
 
-  # shuffle a smaller list
+  # shuffle a smaller list and slots where the last num of list can be possibly
+  # inserted
   shuffle = create_slots.call(get_shuffle list[0..-2])
 
   shuffle[get_random_empty_slot.call(shuffle)] = list.last
