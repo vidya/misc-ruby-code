@@ -10,7 +10,7 @@ fibonacci_sequence.rb
 list_shuffle.rb
 ---------------
 
-  Program for shuffling an input list of numbers. For example
+  Program for shuffling an input list of numbers.
 
     input:    a list like [1,2,3,4,5]
     output:   a random rearrangement of input, e.g. [5,3,4,1,2]
