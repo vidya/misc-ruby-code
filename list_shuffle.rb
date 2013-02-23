@@ -15,41 +15,28 @@ require 'benchmark'
 
 def get_shuffle(list)
   # handle exit conditions
-  return list if list.empty?
-
-  return list if list.length.eql?(1)
+  return list if list.empty? or list.length.eql?(1)
 
   last_num = list.last
 
-  # slice away the last number
-  small_shuffle = get_shuffle(list.slice 0..-2)
+  # shuffle a smaller list
+  small_shuffle = get_shuffle(list[0..-2])
 
-  #put last_num at a random place in small_shuffle
-  last_num_place = rand(0..small_shuffle.length)
+  # put last_num at a random place in small_shuffle
+  insert_location = rand(0..small_shuffle.length)
 
-  return ([last_num] + small_shuffle) if last_num_place.eql?(0)
+  return ([last_num] + small_shuffle) if insert_location.eql?(0)
 
-  return (small_shuffle << last_num) if last_num_place.eql?(small_shuffle.length)
+  return (small_shuffle << last_num) if insert_location.eql?(small_shuffle.length)
 
-  shuffle = []
-
-  small_shuffle_ind = 0
-
-  loop do
-    #binding.pry
-    if small_shuffle_ind < last_num_place
-      shuffle << small_shuffle[small_shuffle_ind]
-      small_shuffle_ind += 1
-    else
-      return (shuffle << last_num) +  small_shuffle[small_shuffle_ind..-1]
-    end
-  end
+  return (small_shuffle[0..(insert_location - 1)] + [last_num] + small_shuffle[insert_location..-1])
 end
 #-------------- } shuffle -----------------------------
 
 
 class Fibonacci
   attr_accessor :fib_num
+
 
   def initialize
     @fib_num = [0, 1]
