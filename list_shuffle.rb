@@ -9,37 +9,36 @@ require 'minitest/autorun'
 
 require 'benchmark'
 
-#--------------- shuffle { ----------------------------
 # [1,2,3,4,5]
 # [5,3,4,1,2]
 
 def get_shuffle(list)
-  create_slots = -> in_list do
-    shuffle = []
+  split_list = -> in_list, insert_position do
+    case insert_position
+      when 0
+        [[], in_list]
 
-    in_list.each { |num| shuffle << nil << num }
-    shuffle << nil
-  end
+      when insert_position.eql?(in_list.length)
+        [in_list, []]
 
-  get_random_empty_slot = -> in_list do
-    insert_location = rand(0..(in_list.length - 1))
-    insert_location = rand(0..(in_list.length - 1))  while in_list[insert_location]
+      else
+        prefix = in_list[0..(insert_position - 1)]
+        suffix = in_list[insert_position..-1]
 
-    insert_location
+        [prefix, suffix]
+    end
   end
 
   # handle exit conditions
   return list if list.empty? or list.length.eql?(1)
 
-  # shuffle a smaller list and slots where the last num of list can be possibly
-  # inserted
-  shuffle = create_slots.call(get_shuffle list[0..-2])
+  small_shuffle = get_shuffle(list[0..-2])
+  insert_location = rand(0..small_shuffle.length)
 
-  shuffle[get_random_empty_slot.call(shuffle)] = list.last
+  prefix, suffix = split_list.call(small_shuffle, insert_location)
 
-  shuffle.compact
+  prefix + [list.last] + suffix
 end
-#-------------- } shuffle -----------------------------
 
 
 class Fibonacci
